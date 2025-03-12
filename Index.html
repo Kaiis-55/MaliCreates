@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mali Creates | Professional Web Development Services</title>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --accent-color: #666666;
+            --light-color: #f5f5f5;
+            --dark-color: #111111;
+            --text-color: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--text-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 10rem 0 5rem;
+            text-align: center;
+            background: var(--primary-color);
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--text-color);
+            color: var(--primary-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.9s;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: var(--text-color);
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        section {
+            padding: 5rem 0;
+            scroll-snap-align: start;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-heading h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .section-heading.animate h2::after {
+            transform: scaleX(1);
+        }
+        
+        .section-heading p {
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .service-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1) rotate(3deg);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        
+        .portfolio-item.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1) rotate(3deg);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--light-color);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        
+        .reviews-container {
+            width: 100%;
+            margin: 0 auto 2rem;
+        }
+        
+        .reviews-wrapper {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .reviews-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .review-header {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #666;
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-author h3 {
+            margin: 0 0 0.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .review-stars {
+            color: #FFD700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .review-company {
+            color: #777;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .review-content p {
+            font-style: italic;
+        }
+        
+        .leave-review-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .leave-review-container h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .rating-select {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        
+        .rating-select input {
+            display: none;
+        }
+        
+        .rating-select label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .rating-select label:hover,
+        .rating-select label:hover ~ label,
+        .rating-select input:checked ~ label {
+            color: #FFD700;
+        }
+        
+        .reviews-actions {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .no-reviews {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* All Reviews Page Styles */
+        .all-reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .review-filters {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        
+        .contact-form.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .form-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .form-btn:hover::before {
+            left: 0;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 0.5rem;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--text-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: #bdc3c7;
+        }
+        
+        /* Cursor effect */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease;
+            z-index: 9999;
+        }
+        
+        .cursor-dot {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+        }
+        
+        a:hover ~ .custom-cursor, 
+        button:hover ~ .custom-cursor,
+        input:hover ~ .custom-cursor,
+        textarea:hover ~ .custom-cursor,
+        select:hover ~ .custom-cursor {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        /* Adding theme switch */
+        .theme-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .theme-switch:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* White theme */
+        .white-theme {
+            --primary-color: #ffffff;
+            --secondary-color: #f0f0f0;
+            --accent-color: #cccccc;
+            --light-color: #eeeeee;
+            --dark-color: #333333;
+            --text-color: #000000;
+        }
+        
+        .white-theme .hero::before {
+            background: linear-gradient(45deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%);
+        }
+        
+        .white-theme .btn,
+        .white-theme .form-btn {
+            background: var(--dark-color);
+            color: white;
+        }
+        
+        .white-theme header {
+            background-color: white;
+            color: var(--dark-color);
+        }
+        
+        .white-theme .logo,
+        .white-theme .nav-links a {
+            color: var(--dark-color);
+        }
+        
+        .white-theme .nav-links a::after {
+            background-color: var(--dark-color);
+        }
+        
+        .white-theme footer {
+            background: white;
+            color: var(--dark-color);
+        }
+        
+        .white-theme .social-links a {
+            color: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+        
+        .white-theme .social-links a:hover {
+            background: var(--dark-color);
+            color: white;
+        }
+        
+        /* Loading animation */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            position: relative;
+            width: 200px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .loader::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--text-color), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        /* Smooth scroll snap */
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y proximity;
+        }
+        
+        /* Text highlight effect */
+        ::selection {
+            background: var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Enhanced mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--primary-color);
+            z-index: 1000;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .mobile-menu ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Slideshow for hero section */
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .slideshow .slide.active {
+            opacity: 1;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-heading h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card,
+            .portfolio-item,
+            .contact-form {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Mali Creates</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="all-reviews.html">All Reviews</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <button class="close-menu">✕</button>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="all-reviews.html">All Reviews</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="mobile-overlay"></div>
+    
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+    
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <section id="home" class="hero">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');"></div>
+        </div>
+        <div class="container hero-content">
+            <h1>Professional Web Design Solutions</h1>
+            <p>Creating stunning, responsive websites that help your business stand out from the competition and drive real results.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-heading reveal">
+                <h2>Our Services</h2>
+                <p>We offer a wide range of web design and development services tailored to meet your specific needs.</p>
+            </div>
+            <div class="services">
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Website Design Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Website Design</h3>
+                        <p>Beautiful, modern designs that align with your brand and capture your audience's attention. We focus on creating visually appealing interfaces that enhance user experience.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Web Development Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Web Development</h3>
+                        <p>Custom-built websites with clean, efficient code that ensure fast loading times and smooth functionality across all devices and browsers.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Responsive Design Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>Responsive Design</h3>
+                        <p>Websites that look and work perfectly on any device - from desktops to smartphones. We ensure your site provides an optimal viewing experience everywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-heading reveal">
+                <h2>Our Portfolio</h2>
+                <p>Take a look at some of our recent work and see how we've helped businesses transform their online presence.</p>
+            </div>
+            <div class="portfolio">
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Business Website Portfolio">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Business Website</h3>
+                        <p>Corporate website redesign</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="E-commerce Store Portfolio">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Store</h3>
+                        <p>Online retail platform</p>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Portfolio Website Example">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Portfolio Website</h3>
+                        <p>Photographer showcase</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <div class="section-heading reveal">
+                <h2>Client Reviews</h2>
+                <p>See what our clients are saying about our web design services, or leave your own review.</p>
+            </div>
+            
+            <!-- Client Reviews -->
+            <div class="reviews-container">
+                <div class="reviews-wrapper">
+                    <div id="reviewsDisplay" class="reviews-slider">
+                        <!-- Reviews will be displayed here dynamically -->
+                        <div class="no-reviews" id="noReviewsMessage">
+                            <p>No reviews yet. Be the first to share your experience!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews-actions">
+                    <a href="all-reviews.html" class="btn">View All Reviews</a>
+                </div>
+            </div>
+            
+            <!-- Leave a Review Form -->
+            <div class="leave-review-container reveal">
+                <h3>Share Your Experience</h3>
+                <form id="reviewForm" class="review-form" onsubmit="return submitReview(event)">
+                    <div class="form-group">
+                        <label for="reviewName">Your Name</label>
+                        <input type="text" id="reviewName" name="reviewName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewEmail">Email</label>
+                        <input type="email" id="reviewEmail" name="reviewEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewCompany">Company (Optional)</label>
+                        <input type="text" id="reviewCompany" name="reviewCompany" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewRating">Rating</label>
+                        <div class="rating-select">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">★</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewText">Your Review</label>
+                        <textarea id="reviewText" name="reviewText" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewImage">Your Profile Image URL (Optional)</label>
+                        <input type="url" id="reviewImage" name="reviewImage" class="form-control" placeholder="https://example.com/your-image.jpg">
+                        <small>Enter a URL to your profile image</small>
+                    </div>
+                    <button type="submit" class="form-btn">Submit Review</button>
+                    <div id="reviewStatus" style="margin-top: 15px; display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-heading reveal">
+                <h2>About Us</h2>
+                <p>Learn more about our passion for creating exceptional web experiences.</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="reveal fade-left">
+                    <p>At Mali Creates, we specialize in crafting beautiful, functional websites that help businesses grow. With years of experience in web design and development, our team is dedicated to delivering high-quality solutions that exceed client expectations.</p>
+                </div>
+                <br>
+                <div class="reveal fade-right">
+                    <p>We believe that a great website is more than just attractive visuals – it's about creating an intuitive user experience that converts visitors into customers. Our approach combines stunning design with strategic thinking to ensure your website not only looks great but also achieves your business goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-heading reveal">
+                <h2>Contact Us</h2>
+                <p>Ready to start your project? Get in touch with us today to discuss your web design needs.</p>
+            </div>
+            <form class="contact-form reveal" id="contactForm" onsubmit="return sendEmail(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone (Optional)</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="project">Project Type</label>
+                    <select id="project" name="project" class="form-control" required>
+                        <option value="" disabled selected>Select project type</option>
+                        <option value="business">Business Website</option>
+                        <option value="ecommerce">E-commerce Store</option>
+                        <option value="portfolio">Portfolio Website</option>
+                        <option value="blog">Blog</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget" class="form-control">
+                        <option value="" disabled selected>Select budget range</option>
+                        <option value="small">$500 - $1,000</option>
+                        <option value="medium">$1,000 - $3,000</option>
+                        <option value="large">$3,000 - $5,000</option>
+                        <option value="enterprise">$5,000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeline">Timeline</label>
+                    <select id="timeline" name="timeline" class="form-control">
+                        <option value="" disabled selected>Select timeline</option>
+                        <option value="urgent">ASAP (1-2 weeks)</option>
+                        <option value="standard">Standard (3-4 weeks)</option>
+                        <option value="relaxed">Flexible (1-2 months)</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-btn">Send Message</button>
+                <div id="formStatus" style="margin-top: 15px; display: none;"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Mali Creates</div>
+                <ul class="social-links">
+                    <li><a href="#">FB</a></li>
+                    <li><a href="#">TW</a></li>
+                    <li><a href="#">IG</a></li>
+                    <li><a href="#">LI</a></li>
+                </ul>
+                <p class="copyright">© 2025 Mali Creates. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="theme-switch">☀</div>
+    <a href="#home" class="back-to-top">↑</a>
+
+    <script>
+        // Scroll animations
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const sectionHeadings = document.querySelectorAll('.section-heading');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const contactForm = document.querySelector('.contact-form');
+            
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+            
+            reveals.forEach(reveal => {
+                const revealTop = reveal.getBoundingClientRect().top;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+            
+            sectionHeadings.forEach(heading => {
+                const headingTop = heading.getBoundingClientRect().top;
+                
+                if (headingTop < windowHeight - revealPoint) {
+                    heading.classList.add('animate');
+                }
+            });
+            
+            serviceCards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                
+                if (cardTop < windowHeight - revealPoint) {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+            
+            portfolioItems.forEach((item, index) => {
+                const itemTop = item.getBoundingClientRect().top;
+                
+                if (itemTop < windowHeight - revealPoint) {
+                    setTimeout(() => {
+                        item.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+            
+            if (contactForm) {
+                const formTop = contactForm.getBoundingClientRect().top;
+                
+                if (formTop < windowHeight - revealPoint) {
+                    contactForm.classList.add('animate');
+                }
+            }
+            
+            // Back to top button visibility
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+        
+        // Handle contact form submission
+        function sendEmail(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const project = document.getElementById('project').value;
+            const message = document.getElementById('message').value;
+            const budget = document.getElementById('budget').value;
+            const timeline = document.getElementById('timeline').value;
+            
+            // Construct email body
+            const emailBody = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Project Type: ${project}
+Budget Range: ${budget}
+Timeline: ${timeline}
+
+Project Details:
+${message}
+            `;
+            
+            // Construct mailto link
+            const mailtoLink = `mailto:hlumelomali17@gmail.com?subject=Web Design Inquiry from ${name}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Show status message
+            const formStatus = document.getElementById('formStatus');
+            formStatus.style.display = 'block';
+            formStatus.style.color = '#333';
+            formStatus.style.padding = '10px';
+            formStatus.style.borderRadius = '5px';
+            formStatus.style.backgroundColor = '#f0f0f0';
+            formStatus.innerHTML = 'Your email client will open with your message. Please send the email to complete your inquiry.';
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            return false;
+        }
+        
+        // Handle review form submission
+        function submitReview(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('reviewName').value;
+            const email = document.getElementById('reviewEmail').value;
+            const company = document.getElementById('reviewCompany').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const reviewText = document.getElementById('reviewText').value;
+            const imageUrl = document.getElementById('reviewImage').value || '';
+            
+            // Create review object
+            const reviewData = {
+                name: name,
+                email: email,
+                company: company,
+                rating: rating,
+                text: reviewText,
+                image: imageUrl,
+                date: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            saveReview(reviewData);
+            
+            // Show status message
+            const reviewStatus = document.getElementById('reviewStatus');
+            reviewStatus.style.display = 'block';
+            reviewStatus.style.color = '#333';
+            reviewStatus.style.padding = '10px';
+            reviewStatus.style.borderRadius = '5px';
+            reviewStatus.style.backgroundColor = '#f0f0f0';
+            reviewStatus.innerHTML = 'Thank you for your review! Your review has been submitted and will appear on the site.';
+            
+            // Reset form
+            document.getElementById('reviewForm').reset();
+            
+            // Update reviews display
+            displayReviews();
+            
+            // Also send via email for backup
+            const emailBody = `
+New Review Submission:
+
+Name: ${name}
+Email: ${email}
+Company: ${company}
+Rating: ${rating} stars
+Review: ${reviewText}
+Image URL: ${imageUrl}
+            `;
+            
+            // Construct mailto link
+            const mailtoLink = `mailto:hlumelomali17@gmail.com?subject=New Review from ${name}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Optional: Send email in background
+            const emailLink = document.createElement('a');
+            emailLink.href = mailtoLink;
+            emailLink.style.display = 'none';
+            document.body.appendChild(emailLink);
+            emailLink.click();
+            document.body.removeChild(emailLink);
+            
+            return false;
+        }
+        
+        // Save review to localStorage
+        function saveReview(reviewData) {
+            // Get existing reviews
+            let reviews = JSON.parse(localStorage.getItem('clientReviews')) || [];
+            
+            // Add new review
+            reviews.push(reviewData);
+            
+            // Save updated reviews
+            localStorage.setItem('clientReviews', JSON.stringify(reviews));
+        }
+        
+        // Display reviews from localStorage
+        function displayReviews(container = 'reviewsDisplay', limit = 3) {
+            const reviewsContainer = document.getElementById(container);
+            if (!reviewsContainer) return;
+            
+            // Get reviews from localStorage
+            let reviews = JSON.parse(localStorage.getItem('clientReviews')) || [];
+            
+            // Sort reviews by date (newest first)
+            reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Apply limit if not on all-reviews page
+            if (limit > 0) {
+                reviews = reviews.slice(0, limit);
+            }
+            
+            // Clear container
+            reviewsContainer.innerHTML = '';
+            
+            // Show message if no reviews
+            if (reviews.length === 0) {
+                const noReviewsMsg = document.createElement('div');
+                noReviewsMsg.className = 'no-reviews';
+                noReviewsMsg.innerHTML = '<p>No reviews yet. Be the first to share your experience!</p>';
+                reviewsContainer.appendChild(noReviewsMsg);
+                return;
+            }
+            
+            // Create review cards
+            reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                
+                // Generate stars based on rating
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        stars += '★';
+                    } else {
+                        stars += '☆';
+                    }
+                }
+                
+                // Format date
+                const reviewDate = new Date(review.date);
+                const formattedDate = reviewDate.toLocaleDateString();
+                
+                // Generate avatar content
+                let avatarContent = '';
+                if (review.image && review.image.trim() !== '') {
+                    avatarContent = `<img src="${review.image}" alt="${review.name}">`;
+                } else {
+                    avatarContent = review.name.charAt(0).toUpperCase();
+                }
+                
+                // Create review HTML
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            ${avatarContent}
+                        </div>
+                        <div class="review-author">
+                            <h3>${review.name}</h3>
+                            <div class="review-stars">
+                                <span>${stars}</span>
+                            </div>
+                            ${review.company ? `<p class="review-company">${review.company}</p>` : ''}
+                            <small>${formattedDate}</small>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"${review.text}"</p>
+                    </div>
+                `;
+                
+                reviewsContainer.appendChild(reviewCard);
+            });
+        }
+        
+        // Initialize reviews display
+        window.addEventListener('load', function() {
+            // Hide loader
+            const loader = document.querySelector('.loader-container');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
+            
+            // Run the reveal animation
+            reveal();
+            
+            // Check if we need to add initial reviews
+            const existingReviews = JSON.parse(localStorage.getItem('clientReviews')) || [];
+            if (existingReviews.length === 0) {
+                // Add some initial reviews
+                const initialReviews = [
+                    {
+                        name: "Michael Johnson",
+                        email: "example1@example.com",
+                        company: "Johnson Tech Solutions",
+                        rating: "5",
+                        text: "Mali Creates transformed our online presence completely. Our new website is not only visually stunning but also incredibly functional. Since the redesign, we've seen a 45% increase in leads from our site. The team was responsive, professional, and delivered ahead of schedule!",
+                        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                        date: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString() // 15 days ago
+                    },
+                    {
+                        name: "Emily Rodriguez",
+                        email: "example2@example.com",
+                        company: "Bloom Beauty Studio",
+                        rating: "5",
+                        text: "As a small business owner, I needed a website that would stand out in my competitive industry. Mali Creates delivered beyond my expectations! Their attention to detail and understanding of my brand were impressive. The mobile responsiveness is perfect, and I've received countless compliments on the design.",
+                        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                        date: new Date(Date.now() - 28 * 24 * 60 * 60 * 1000).toISOString() // 28 days ago
+                    },
+                    {
+                        name: "David Kim",
+                        email: "example3@example.com",
+                        company: "Global Marketing Partners",
+                        rating: "5",
+                        text: "Working with Mali Creates was a game-changer for our digital marketing agency. We needed a site that showcased our portfolio while being easy to navigate. Not only did they nail the design, but they also optimized our site for speed and SEO. We're already seeing improved search rankings!",
+                        image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                        date: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString() // 45 days ago
+                    },
+                    {
+                        name: "Sarah Thompson",
+                        email: "example4@example.com",
+                        company: "Thompson Legal Services",
+                        rating: "5",
+                        text: "As an attorney, having a professional and trustworthy online presence is critical. The team at Mali Creates understood this from day one. They created a sophisticated, clean design that perfectly represents our firm's values. The content organization makes it easy for potential clients to find exactly what they're looking for.",
+                        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                        date: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString() // 60 days ago
+                    },
+                    {
+                        name: "Robert Chen",
+                        email: "example5@example.com",
+                        company: "Innovative Solutions Inc.",
+                        rating: "5",
+                        text: "I can't recommend Mali Creates highly enough! They redesigned our outdated e-commerce site, and the results have been phenomenal. The checkout process is now seamless, the product catalog is beautifully organized, and our conversion rate has increased by 32%. The investment has already paid for itself many times over.",
+                        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                        date: new Date(Date.now() - 75 * 24 * 60 * 60 * 1000).toISOString() // 75 days ago
+                    }
+                ];
+                
+                // Save initial reviews
+                localStorage.setItem('clientReviews', JSON.stringify(initialReviews));
+            }
+            
+            // Display reviews
+            displayReviews();
+            
+            // Initialize slideshow
+            initSlideshow();
+            
+            // Initialize custom cursor
+            initCustomCursor();
+            
+            // Initialize mobile menu
+            initMobileMenu();
+        });
+        
+        // Theme switch functionality
+        document.querySelector('.theme-switch').addEventListener('click', function() {
+            document.body.classList.toggle('white-theme');
+            this.textContent = document.body.classList.contains('white-theme') ? '☾' : '☀';
+        });
+        
+        // Initialize hero slideshow
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.slideshow .slide');
+            let currentSlide = 0;
+            
+            // Change slide every 5 seconds
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+        
+        // Initialize custom cursor
+        function initCustomCursor() {
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+            
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            
+            // Hide cursor when leaving window
+            document.addEventListener('mouseout', () => {
+                cursor.style.display = 'none';
+                cursorDot.style.display = 'none';
+            });
+            
+            document.addEventListener('mouseover', () => {
+                cursor.style.display = 'block';
+                cursorDot.style.display = 'block';
+            });
+        }
+        
+        // Initialize mobile menu
+        function initMobileMenu() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const closeMenu = document.querySelector('.close-menu');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-menu ul li a');
+            
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            function closeNav() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            closeMenu.addEventListener('click', closeNav);
+            overlay.addEventListener('click', closeNav);
+            
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeNav);
+            });
+        }
+    </script>
+</body>
+</html>
